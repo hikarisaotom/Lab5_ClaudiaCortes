@@ -1056,13 +1056,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jt_ArbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_ArbolitoMouseClicked
-     
+     int Carpeta=jt_Arbolito.getClosestRowForLocation(evt.getX(),evt.getY());
+        System.out.println("CARPETA"+Carpeta);
         if (evt.isMetaDown()) {
             //Seleccoinar un nodo con click derecho.
             int Equipo =jt_Arbolito.getClosestRowForLocation(evt.getX(),evt.getY());
             jt_Arbolito.setSelectionRow(Equipo);
-            
-            //determinar el tipo de objeto selecionado.
+                        //determinar el tipo de objeto selecionado.
             //contenido en el nodo seleccionado
             Object v1=jt_Arbolito.getSelectionPath().getLastPathComponent();//nos da la ruta y luego nos saca el final de la ruta.
             nodo_seleccionado=(DefaultMutableTreeNode)v1;
@@ -1071,12 +1071,13 @@ public class Principal extends javax.swing.JFrame {
             
             if (nodo_seleccionado.getUserObject() instanceof Jugadores) {
                 System.out.println("SOUT ES UN JUGADOR");
+                System.out.println("++"+Equipos.get(Carpeta).getJugadores());
                 persona_seleccionada =(Jugadores)nodo_seleccionado.getUserObject();
-                /*for (int i = 0; i <Equipos.get(Equipo).getJugadores().size(); i++) {
+                for (int i = 0; i <Equipos.get(Equipo).getJugadores().size(); i++) {
                     if (Equipos.get(Equipo).getJugadores().get(i).getId()==persona_seleccionada.getId()) {
                         System.out.println("POSIISON                                                                               "+i);
                     }
-                }*/
+                }
                
                 pp_arbol.show(evt.getComponent(),evt.getX(),evt.getY());
             }
