@@ -364,6 +364,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel26.setText("Equipos");
 
         jButton1.setText("Comprar!");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_ComprarJugadoresLayout = new javax.swing.GroupLayout(jd_ComprarJugadores.getContentPane());
         jd_ComprarJugadores.getContentPane().setLayout(jd_ComprarJugadoresLayout);
@@ -890,6 +895,39 @@ public class Principal extends javax.swing.JFrame {
         jd_ComprarJugadores.pack();//acopla el contenido de la ventana a los controles que estan dentro
         jd_ComprarJugadores.setLocationRelativeTo(this);//centra la centana hija respecto a al ventana padre.
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+      
+        if (SeleccionadoE>=0&&SeleccionadoJ>=0) {
+            Equipos EActual=Equipos.get(SeleccionadoE);
+            Jugadores JActual=Jugadores.get(SeleccionadoJ);
+            if (JActual.getDisponibilidad()) {
+                if (EActual.getPresupuesto()>=JActual.getPrecio()) {
+                    EActual.setPresupuesto( (EActual.getPresupuesto()-JActual.getPrecio()) );
+                    JActual.setDisponibilidad(false);
+                    JOptionPane.showMessageDialog(jd_ComprarJugadores,"El Jugador ha sido comprado con exito!");
+                    DefaultListModel modelo = new DefaultListModel();
+                    /*ACTUALIZAMOS LOS JUGADORES*/
+                    for (Jugadores J : Jugadores) {
+                        modelo.addElement(J);
+                    }
+                    jl_jugadores.setModel(modelo);
+                    jl_JugadoresComprar.setModel(modelo);
+                    /*ACTUALIZAMOS LOS EQUIPOS*/
+                    DefaultListModel modelo1 = new DefaultListModel();
+                    for (Equipos E : Equipos) {
+                        modelo1.addElement(E);
+                    }
+                    jl_Equipos.setModel(modelo1);
+                    jl_EquiposComprar.setModel(modelo1);
+                }
+            }else{
+            JOptionPane.showMessageDialog(jd_ComprarJugadores,"El Jugador Seleccionado no esta Disponible!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(jd_ComprarJugadores,"Seleccione un Equipo y un jugador");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
