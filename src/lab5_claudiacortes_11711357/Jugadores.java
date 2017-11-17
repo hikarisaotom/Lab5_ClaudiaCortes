@@ -14,7 +14,8 @@ public class Jugadores {
     protected String Nombre;
     protected Double Precio;
     protected String Posicion;
-    protected String Disponibilidad;
+    //protected String Disponibilidad;
+    protected boolean Disponibilidad;
     protected double Habilidad;
     protected double Tecnica;
     protected double Resistencia_F;
@@ -31,7 +32,7 @@ public class Jugadores {
         return Posicion;
     }
 
-    public String getDisponibilidad() {
+    public boolean getDisponibilidad() {
         return Disponibilidad;
     }
 
@@ -47,7 +48,7 @@ public class Jugadores {
         return Resistencia_F;
     }
 
-    public Jugadores(String Nombre, Double Precio, String Posicion, String Disponibilidad, double Habilidad, double Tecnica, double Resistencia_F) {
+    public Jugadores(String Nombre, Double Precio, String Posicion, boolean Disponibilidad, double Habilidad, double Tecnica, double Resistencia_F) {
         this.Nombre = Nombre;
         this.Precio = Precio;
         this.Posicion = Posicion;
@@ -62,7 +63,38 @@ public class Jugadores {
 
     @Override
     public String toString() {
-        return Nombre ;
+        return  Nombre + "Precio:" + Precio + " Posicion: " + Posicion + " Disponibilidad=" + Disponibilidad + ", Habilidad=" + Habilidad + ", Tecnica=" + Tecnica + ", Resistencia_F=" + Resistencia_F + '}';
     }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public void setPrecio(Double Precio) {
+        this.Precio = Precio;
+    }
+
+    public void setPosicion(String Posicion) {
+        this.Posicion = Posicion;
+    }
+
+    public void setDisponibilidad(boolean Disponibilidad) {
+        this.Disponibilidad = Disponibilidad;
+    }
+
+    public void setHabilidad(double Habilidad) {
+        this.Habilidad = Habilidad;
+    }
+
+    public void setTecnica(double Tecnica) {
+        this.Tecnica = Tecnica;
+    }
+
+    public void setResistencia_F(double Resistencia_F) {
+        this.Resistencia_F = Resistencia_F;
+    }
+
+   
+   
 
 }
