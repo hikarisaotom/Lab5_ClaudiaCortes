@@ -5,10 +5,14 @@
  */
 package lab5_claudiacortes_11711357;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -72,7 +76,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jl_EquiposComprar = new javax.swing.JList<>();
         jLabel26 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btncomprar = new javax.swing.JButton();
         pp_mod_elimiar = new javax.swing.JPopupMenu();
         Modificar = new javax.swing.JMenuItem();
         Eliminar = new javax.swing.JMenuItem();
@@ -106,6 +110,13 @@ public class Principal extends javax.swing.JFrame {
         js_copas1 = new javax.swing.JSpinner();
         jt_estadio1 = new javax.swing.JTextField();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jd_Arbol = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jt_Arbolito = new javax.swing.JTree();
+        jLabel27 = new javax.swing.JLabel();
+        pp_arbol = new javax.swing.JPopupMenu();
+        mostrarinfo = new javax.swing.JMenuItem();
+        eliminarjugador = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -118,6 +129,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         jLabel1.setText("Nombre");
 
@@ -357,16 +370,26 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel25.setText("Jugadores a Comprar");
 
+        jl_JugadoresComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_JugadoresComprarMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jl_JugadoresComprar);
 
+        jl_EquiposComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_EquiposComprarMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jl_EquiposComprar);
 
         jLabel26.setText("Equipos");
 
-        jButton1.setText("Comprar!");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btncomprar.setText("Comprar!");
+        btncomprar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btncomprarMouseClicked(evt);
             }
         });
 
@@ -382,7 +405,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(255, 255, 255))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_ComprarJugadoresLayout.createSequentialGroup()
                         .addGap(197, 197, 197)
-                        .addComponent(jButton1))
+                        .addComponent(btncomprar))
                     .addGroup(jd_ComprarJugadoresLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jd_ComprarJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -406,7 +429,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jButton1)
+                .addComponent(btncomprar)
                 .addGap(48, 48, 48))
         );
 
@@ -632,6 +655,52 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem6.setText("jMenuItem6");
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos Liga Española");
+        jt_Arbolito.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_Arbolito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_ArbolitoMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jt_Arbolito);
+
+        jLabel27.setText("Equipos Liga Española");
+
+        javax.swing.GroupLayout jd_ArbolLayout = new javax.swing.GroupLayout(jd_Arbol.getContentPane());
+        jd_Arbol.getContentPane().setLayout(jd_ArbolLayout);
+        jd_ArbolLayout.setHorizontalGroup(
+            jd_ArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ArbolLayout.createSequentialGroup()
+                .addGroup(jd_ArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_ArbolLayout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jLabel27))
+                    .addGroup(jd_ArbolLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jd_ArbolLayout.setVerticalGroup(
+            jd_ArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ArbolLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        mostrarinfo.setText("Mostrar informacion");
+        mostrarinfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarinfoActionPerformed(evt);
+            }
+        });
+        pp_arbol.add(mostrarinfo);
+
+        eliminarjugador.setText("Eliminar del equipo");
+        pp_arbol.add(eliminarjugador);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Administrar");
@@ -692,6 +761,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu7.setText("Mostrar Equipos de la Liga");
+
+        jMenuItem8.setText("Mostrar Equipos");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu7);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -734,6 +815,8 @@ public class Principal extends javax.swing.JFrame {
         dispo = jc_dispo.getSelectedItem().toString();
         pos = jc_pos.getSelectedItem().toString();
         Jugadores J = new Jugadores(Nombre, precio, pos, true, habi, tecni, resis);
+        J.setId(id);
+        id++;
         DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
         modelo.addElement(J);
         jl_jugadores.setModel(modelo);
@@ -757,7 +840,15 @@ public class Principal extends javax.swing.JFrame {
         modelo.addElement(E);
         jl_Equipos.setModel(modelo);
           jl_EquiposComprar.setModel(modelo);
-        Equipos.add(E);
+          Equipos.add(E);
+           //los nodos se  DefaultMutableTreeNode tree node
+        DefaultTreeModel m = (DefaultTreeModel) jt_Arbolito.getModel();
+        DefaultMutableTreeNode Raiz = (DefaultMutableTreeNode) m.getRoot();
+        
+        DefaultMutableTreeNode nodo_Equipo;
+        nodo_Equipo = new DefaultMutableTreeNode(E);
+        Raiz.add(nodo_Equipo);
+        m.reload();
         JOptionPane.showMessageDialog(jd_CrearEquipos, "Equipo agregado exitosamente");
     }//GEN-LAST:event_btn_CrearEquipoMouseClicked
 
@@ -786,6 +877,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         Jugadores Actual=Jugadores.get(SeleccionadoJ);
+        btn_GuardarJugador1.show(true);
         jt_nombre1.setText(Actual.getNombre());
        js_tecnica1.setValue(Actual.getTecnica());
       js_precio1.setValue(Actual.getPrecio());
@@ -896,8 +988,10 @@ public class Principal extends javax.swing.JFrame {
         jd_ComprarJugadores.setLocationRelativeTo(this);//centra la centana hija respecto a al ventana padre.
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-      
+    private void btncomprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncomprarMouseClicked
+       // System.out.println("SELECCIONADOS");
+        //System.out.println("Equipos"+SeleccionadoE);
+         // System.out.println("Jugadores"+SeleccionadoJ);
         if (SeleccionadoE>=0&&SeleccionadoJ>=0) {
             Equipos EActual=Equipos.get(SeleccionadoE);
             Jugadores JActual=Jugadores.get(SeleccionadoJ);
@@ -905,6 +999,7 @@ public class Principal extends javax.swing.JFrame {
                 if (EActual.getPresupuesto()>=JActual.getPrecio()) {
                     EActual.setPresupuesto( (EActual.getPresupuesto()-JActual.getPrecio()) );
                     JActual.setDisponibilidad(false);
+                    EActual.getJugadores().add(JActual);
                     JOptionPane.showMessageDialog(jd_ComprarJugadores,"El Jugador ha sido comprado con exito!");
                     DefaultListModel modelo = new DefaultListModel();
                     /*ACTUALIZAMOS LOS JUGADORES*/
@@ -921,13 +1016,91 @@ public class Principal extends javax.swing.JFrame {
                     jl_Equipos.setModel(modelo1);
                     jl_EquiposComprar.setModel(modelo1);
                 }
+                /*ACTUALIZAMOS EL ARBOL*/
+                DefaultTreeModel m = (DefaultTreeModel) jt_Arbolito.getModel();
+                DefaultMutableTreeNode Raiz = (DefaultMutableTreeNode) m.getRoot();
+                Raiz.removeAllChildren();
+                DefaultMutableTreeNode nodo_Equipo;
+                DefaultMutableTreeNode nodo_Jugador;
+                for (int i = 0; i < Equipos.size(); i++) {
+                    nodo_Equipo = new DefaultMutableTreeNode(Equipos.get(i));
+                    for (int j = 0; j < Equipos.get(i).getJugadores().size(); j++) {
+                        nodo_Jugador = new DefaultMutableTreeNode(Equipos.get(i).getJugadores().get(j));
+                        nodo_Equipo.add(nodo_Jugador);
+                    }
+                    Raiz.add(nodo_Equipo);
+                }
+                  m.reload();
             }else{
             JOptionPane.showMessageDialog(jd_ComprarJugadores,"El Jugador Seleccionado no esta Disponible!");
             }
         }else{
             JOptionPane.showMessageDialog(jd_ComprarJugadores,"Seleccione un Equipo y un jugador");
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+        
+    }//GEN-LAST:event_btncomprarMouseClicked
+
+    private void jl_JugadoresComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_JugadoresComprarMouseClicked
+     SeleccionadoJ=jl_JugadoresComprar.getSelectedIndex();
+    }//GEN-LAST:event_jl_JugadoresComprarMouseClicked
+
+    private void jl_EquiposComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_EquiposComprarMouseClicked
+     SeleccionadoE=jl_EquiposComprar.getSelectedIndex();
+    }//GEN-LAST:event_jl_EquiposComprarMouseClicked
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        this.jd_Arbol.setModal(true);
+        jd_Arbol.setVisible(true);
+        jd_Arbol.pack();//acopla el contenido de la ventana a los controles que estan dentro
+        jd_Arbol.setLocationRelativeTo(this);//centra la centana hija respecto a al ventana padre.
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jt_ArbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_ArbolitoMouseClicked
+     
+        if (evt.isMetaDown()) {
+            //Seleccoinar un nodo con click derecho.
+            int Equipo =jt_Arbolito.getClosestRowForLocation(evt.getX(),evt.getY());
+            jt_Arbolito.setSelectionRow(Equipo);
+            
+            //determinar el tipo de objeto selecionado.
+            //contenido en el nodo seleccionado
+            Object v1=jt_Arbolito.getSelectionPath().getLastPathComponent();//nos da la ruta y luego nos saca el final de la ruta.
+            nodo_seleccionado=(DefaultMutableTreeNode)v1;
+           
+            //El userobject saca el tipo de dato que se guardo dentro del nodo.
+            
+            if (nodo_seleccionado.getUserObject() instanceof Jugadores) {
+                System.out.println("SOUT ES UN JUGADOR");
+                persona_seleccionada =(Jugadores)nodo_seleccionado.getUserObject();
+                /*for (int i = 0; i <Equipos.get(Equipo).getJugadores().size(); i++) {
+                    if (Equipos.get(Equipo).getJugadores().get(i).getId()==persona_seleccionada.getId()) {
+                        System.out.println("POSIISON                                                                               "+i);
+                    }
+                }*/
+               
+                pp_arbol.show(evt.getComponent(),evt.getX(),evt.getY());
+            }
+            
+            
+        }  
+        
+    }//GEN-LAST:event_jt_ArbolitoMouseClicked
+
+    private void mostrarinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarinfoActionPerformed
+     Jugadores Actual=Jugadores.get(SeleccionadoJ);
+        jt_nombre1.setText(Actual.getNombre());
+       js_tecnica1.setValue(Actual.getTecnica());
+      js_precio1.setValue(Actual.getPrecio());
+      js_habilidad1.setValue(Actual.getHabilidad());
+        jc_dispo1.setSelectedItem(Actual.getPosicion());
+       // dispo = jc_dispo1.getSelectedItem().toString();
+      btn_GuardarJugador1.show(false);
+       // Actual.setDisponibilidad(dispo);
+        this.jd_ModJug.setModal(true);
+        jd_ModJug.setVisible(true);
+        jd_ModJug.pack();//acopla el contenido de la ventana a los controles que estan dentro
+        jd_ModJug.setLocationRelativeTo(this);//centra la centana hija respecto a al ventana padre.
+    }//GEN-LAST:event_mostrarinfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -971,8 +1144,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_CrearEquipo1;
     private javax.swing.JButton btn_GuardarJugador;
     private javax.swing.JButton btn_GuardarJugador1;
+    private javax.swing.JButton btncomprar;
     private javax.swing.JMenuItem elimiare;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem eliminarjugador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -992,6 +1166,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1004,6 +1179,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -1012,14 +1188,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JComboBox<String> jc_dispo;
     private javax.swing.JComboBox<String> jc_dispo1;
     private javax.swing.JComboBox<String> jc_pos;
     private javax.swing.JComboBox<String> jc_pos1;
+    private javax.swing.JDialog jd_Arbol;
     private javax.swing.JDialog jd_ComprarJugadores;
     private javax.swing.JDialog jd_CrearEquipos;
     private javax.swing.JDialog jd_CrearJugadores;
@@ -1042,6 +1221,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_resistencia1;
     private javax.swing.JSpinner js_tecnica;
     private javax.swing.JSpinner js_tecnica1;
+    private javax.swing.JTree jt_Arbolito;
     private javax.swing.JTextField jt_estadio;
     private javax.swing.JTextField jt_estadio1;
     private javax.swing.JTextField jt_nombre;
@@ -1049,6 +1229,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jt_nombreE;
     private javax.swing.JTextField jt_nombreE1;
     private javax.swing.JMenuItem modificare;
+    private javax.swing.JMenuItem mostrarinfo;
+    private javax.swing.JPopupMenu pp_arbol;
     private javax.swing.JPopupMenu pp_mod_elimiar;
     private javax.swing.JPopupMenu pp_mod_eliminar_e;
     // End of variables declaration//GEN-END:variables
@@ -1056,5 +1238,10 @@ public class Principal extends javax.swing.JFrame {
     private ArrayList<Jugadores> Jugadores = new ArrayList();
     private int SeleccionadoE;
     private int SeleccionadoJ;
-
+    private int RowSeleccionada;
+    private int posSeleecionada; 
+    private DefaultMutableTreeNode nodo_seleccionado;
+     private DefaultMutableTreeNode j_seleccionado;
+private Jugadores persona_seleccionada;
+protected int id=5;
 }

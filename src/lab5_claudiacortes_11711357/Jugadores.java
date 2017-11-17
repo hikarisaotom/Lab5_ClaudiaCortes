@@ -19,7 +19,15 @@ public class Jugadores {
     protected double Habilidad;
     protected double Tecnica;
     protected double Resistencia_F;
+protected int id=0;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNombre() {
         return Nombre;
     }
