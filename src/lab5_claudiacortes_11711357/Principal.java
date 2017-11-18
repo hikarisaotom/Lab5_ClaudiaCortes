@@ -699,6 +699,11 @@ public class Principal extends javax.swing.JFrame {
         pp_arbol.add(mostrarinfo);
 
         eliminarjugador.setText("Eliminar del equipo");
+        eliminarjugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarjugadorActionPerformed(evt);
+            }
+        });
         pp_arbol.add(eliminarjugador);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1056,11 +1061,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jt_ArbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_ArbolitoMouseClicked
-    int Carpeta=0;
+   
         if (evt.isMetaDown()) {
             //Seleccoinar un nodo con click derecho.
             int Equipo =jt_Arbolito.getClosestRowForLocation(evt.getX(),evt.getY());
             jt_Arbolito.setSelectionRow(Equipo);
+            
                         //determinar el tipo de objeto selecionado.
             //contenido en el nodo seleccionado
             Object v1=jt_Arbolito.getSelectionPath().getLastPathComponent();//nos da la ruta y luego nos saca el final de la ruta.
@@ -1078,9 +1084,9 @@ public class Principal extends javax.swing.JFrame {
                 for (int i = 0; i <Equipos.get(Carpeta).getJugadores().size(); i++) {
                     if (Equipos.get(Carpeta).getJugadores().get(i).getId()==persona_seleccionada.getId()) {
                         System.out.println("POSIISON                                                                               "+i);
+                        Global=i;
                     }
                 }
-               
                 pp_arbol.show(evt.getComponent(),evt.getX(),evt.getY());
             }
             
@@ -1104,6 +1110,26 @@ public class Principal extends javax.swing.JFrame {
         jd_ModJug.pack();//acopla el contenido de la ventana a los controles que estan dentro
         jd_ModJug.setLocationRelativeTo(this);//centra la centana hija respecto a al ventana padre.
     }//GEN-LAST:event_mostrarinfoActionPerformed
+
+    private void eliminarjugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarjugadorActionPerformed
+        Equipos.get(Carpeta).getJugadores().get(Global).setDisponibilidad(true);
+        Equipos.get(Carpeta).getJugadores().remove(Global);
+        DefaultListModel modelo = new DefaultListModel();
+        for (Jugadores J : Jugadores) {
+            modelo.addElement(J);
+        }
+        jl_jugadores.setModel(modelo);
+        jl_JugadoresComprar.setModel(modelo);
+         DefaultListModel modelo1 = (DefaultListModel) jl_Equipos.getModel();
+        modelo1 = new DefaultListModel();
+        for (Equipos E : Equipos) {
+            modelo1.addElement(E);
+        }
+        jl_Equipos.setModel(modelo1);
+        jl_EquiposComprar.setModel(modelo1);
+       JOptionPane.showMessageDialog(jd_Arbol,"SE HA ELIMINADO EL JUGADOR");
+
+    }//GEN-LAST:event_eliminarjugadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1247,4 +1273,6 @@ public class Principal extends javax.swing.JFrame {
      private DefaultMutableTreeNode j_seleccionado;
 private Jugadores persona_seleccionada;
 protected int id=5;
+private int Carpeta;
+private int Global;
 }
