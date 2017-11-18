@@ -1127,6 +1127,21 @@ public class Principal extends javax.swing.JFrame {
         }
         jl_Equipos.setModel(modelo1);
         jl_EquiposComprar.setModel(modelo1);
+         /*ACTUALIZAMOS EL ARBOL*/
+                DefaultTreeModel m = (DefaultTreeModel) jt_Arbolito.getModel();
+                DefaultMutableTreeNode Raiz = (DefaultMutableTreeNode) m.getRoot();
+                Raiz.removeAllChildren();
+                DefaultMutableTreeNode nodo_Equipo;
+                DefaultMutableTreeNode nodo_Jugador;
+                for (int i = 0; i < Equipos.size(); i++) {
+                    nodo_Equipo = new DefaultMutableTreeNode(Equipos.get(i));
+                    for (int j = 0; j < Equipos.get(i).getJugadores().size(); j++) {
+                        nodo_Jugador = new DefaultMutableTreeNode(Equipos.get(i).getJugadores().get(j));
+                        nodo_Equipo.add(nodo_Jugador);
+                    }
+                    Raiz.add(nodo_Equipo);
+                }
+                  m.reload();
        JOptionPane.showMessageDialog(jd_Arbol,"SE HA ELIMINADO EL JUGADOR");
 
     }//GEN-LAST:event_eliminarjugadorActionPerformed
